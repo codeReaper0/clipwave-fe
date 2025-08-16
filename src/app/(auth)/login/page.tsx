@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import {useRouter} from "next/navigation";
 import Cookie from "js-cookie";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +31,7 @@ const LoginForm = () => {
         "https://clipwave-backend-fue2eyddgwd8akbw.uksouth-01.azurewebsites.net/users/login",
         formData
       );
-      console.log(response);
+      toast.success("Login Successful");
       Cookie.set("token", response.data.token);
       Cookie.set("role", response.data.role);
       Cookie.set("username", response.data.username);
@@ -44,7 +45,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="max-w-md w-full p-6">
+    <div className="bg-gray-800 bg-opacity-50 rounded-xl hover:bg-opacity-70 transition-all duration-300 hover:-translate-y-1 max-w-md w-full p-6">
       <h2 className="text-2xl font-bold mb-6 text-center text-white">Log In</h2>
       {error && (
         <div className="mb-4 p-2 bg-red-100 text-red-700 rounded">{error}</div>

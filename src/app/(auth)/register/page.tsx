@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {useRouter} from "next/navigation";
+import toast from "react-hot-toast";
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -45,8 +46,7 @@ const SignupForm = () => {
           role: formData.role,
         }
       );
-
-      localStorage.setItem("token", response.data.token);
+      toast.success("Registration Successful, Proceed to login!");
       router.push("/home");
     } catch (err: any) {
       setError(err.response?.data?.message || "Signup failed");
@@ -56,7 +56,7 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="max-w-md w-full mx-auto p-6">
+    <div className="bg-gray-800 bg-opacity-50 rounded-xl hover:bg-opacity-70 transition-all duration-300 hover:-translate-y-1 max-w-md w-full p-6">
       <h2 className="text-2xl font-bold mb-6 text-center text-black">
         Create Account
       </h2>

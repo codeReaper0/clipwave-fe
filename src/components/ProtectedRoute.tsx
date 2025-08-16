@@ -13,7 +13,6 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({children}) => {
 
   if (!token) {
     Cookie.remove("token");
-    Cookie.remove("user");
 
     router.push("/login");
   }

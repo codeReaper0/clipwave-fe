@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import {Open_Sans} from "next/font/google";
 import "./globals.css";
+import {Toaster} from "react-hot-toast";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -18,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${openSans.variable} `}>{children}</body>
+      <body className={`${openSans.variable} `}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
